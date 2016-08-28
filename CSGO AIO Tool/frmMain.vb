@@ -120,8 +120,8 @@
         End With
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+    Private Sub btnCrosshairselector_Click(sender As Object, e As EventArgs) Handles btnCrosshairselector.Click
+        Crosshair_selector.Show()
     End Sub
 
     Public Function GetSteamFolder() As String
