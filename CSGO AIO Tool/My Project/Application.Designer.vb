@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.CSGO_AIO_Tool.Form1
+            Me.MainForm = Global.CSGO_AIO_Tool.frmMain
         End Sub
     End Class
 End Namespace

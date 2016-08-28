@@ -1,33 +1,139 @@
 ﻿Public Class Crosshair_selector
-    Dim crosshair As String
-    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        Form1.globalcrosshair = crosshair
-        Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 0)
-        MsgBox(crosshair)
-        Me.Close()
-    End Sub
+    Dim crosshair, crossname As String
 
-    Private Sub picNone_Click(sender As Object, e As EventArgs) Handles picNone.Click
-        crosshair = ""
-        Me.Text = "Crosshair selector window - selected: NONE"
-    End Sub
 
     Private Sub Crosshair_selector_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Location = New Point(Form1.Location.X - 250, Form1.Location.Y)
-        Me.Size = New Size(828, 592)
+        Me.Location = New Point(frmMain.Location.X - 250, frmMain.Location.Y)
+        Me.Size = New Size(1011, 592)
+#Region "images"
+        'started doing this instead of manually adding pictures since it kept messing up the form layout due to autoscroll.
+        'FML should have done this since begin..
+        'OPTIC
+        picdaps.Image = My.Resources.daps
+        picmixwell.Image = My.Resources.mixwell
+        picNAF.Image = My.Resources.NAF
+        picRUSH.Image = My.Resources.RUSH
+        pictarik.Image = My.Resources.tarik
+        'RENEGADES
+        picazr.Image = My.Resources.AZR
+        picjks.Image = My.Resources.jks
+        picrickeh.Image = My.Resources.rickeh
+        picustilo.Image = My.Resources.ustilo
+        picyam.Image = My.Resources.yam
+        'ASTRALIS
+        picdevice.Image = My.Resources.device
+        picdupreeh.Image = My.Resources.dupreeh
+        pickarrigan.Image = My.Resources.karrigan
+        pickjaerbye.Image = My.Resources.kjaerbye
+        picxyp9x.Image = My.Resources.xyp9x
+        'CLOUD9
+        picautimatic.Image = My.Resources.autimatic
+        picnothing.Image = My.Resources.n0thing
+        picshroud.Image = My.Resources.autimatic
+        picskadoodle.Image = My.Resources.skadoodle
+        picstewie2k.Image = My.Resources.stewie2k
+        'DIGNITAS
+        piccajunb.Image = My.Resources.cajunb
+        pickonfig.Image = My.Resources.k0nfig
+        picmagiskboy.Image = My.Resources.magiskb0y
+        picMSL.Image = My.Resources.MSL
+        picRUBINO.Image = My.Resources.RUBINO
+        'ENVYUS
+        picapex.Image = My.Resources.apex
+        picdevil.Image = My.Resources.devil
+        pichappy.Image = My.Resources.Happy
+        pickennys.Image = My.Resources.kennys
+        picnbk.Image = My.Resources.nbk
+        'FAZE
+        picaizy.Image = My.Resources.aizy
+        picfox.Image = My.Resources.fox
+        picjkaem.Image = My.Resources.jkaem
+        pickioshima.Image = My.Resources.kioshima
+        picrain.Image = My.Resources.rain
+        'FNATIC
+        picdennis.Image = My.Resources.dennis
+        piclekro.Image = My.Resources.lekro
+        picolof.Image = My.Resources.olofmeister
+        pictwist.Image = My.Resources.twist
+        picwenton.Image = My.Resources.wenton
+        'G2
+        picbodyy.Image = My.Resources.bodyy
+        picrpk.Image = My.Resources.rpk
+        picscream.Image = My.Resources.scream
+        picshox.Image = My.Resources.shox
+        picsmithzz.Image = My.Resources.smithzz
+        'GODSENT
+        picflusha.Image = My.Resources.flusha
+        picjw.Image = My.Resources.jw
+        pickrimz.Image = My.Resources.krimz
+        picpronax.Image = My.Resources.pronax
+        picznajder.Image = My.Resources.znajder
+        'IMMORTALS
+        picboltz.Image = My.Resources.boltz
+        picfelps.Image = My.Resources.felps
+        pichen1.Image = My.Resources.HEN1
+        piclucas1.Image = My.Resources.LUCAS1
+        picshoowtime.Image = My.Resources.shoowtime
+        'LIQUID
+        picelige.Image = My.Resources.elige
+        pichiko.Image = My.Resources.Hiko
+        picjdm.Image = My.Resources.jdm
+        picnitr0.Image = My.Resources.nitro
+        picpimp.Image = My.Resources.pimp
+        'MOUZ
+        picchrisj.Image = My.Resources.chrisj
+        picdenis.Image = My.Resources.denis
+        picnex.Image = My.Resources.nex
+        picniko.Image = My.Resources.niko
+        picspiidi.Image = My.Resources.spiidi
+        'NAVI
+        picedward.Image = My.Resources.edward
+        picflamie.Image = My.Resources.flamie
+        picguardian.Image = My.Resources.guardian
+        pics1mple.Image = My.Resources.simple
+        picseized.Image = My.Resources.seized
+        'NIP
+        picforest.Image = My.Resources.forest
+        picfriberg.Image = My.Resources.friberg
+        picgetright.Image = My.Resources.getright
+        picpyth.Image = My.Resources.pyth
+        picxizt.Image = My.Resources.xizt
+        'SK
+        piccoldzera.Image = My.Resources.coldzera
+        picfallen.Image = My.Resources.fallen
+        picfer.Image = My.Resources.fer
+        picfnx.Image = My.Resources.fnx
+        pictaco.Image = My.Resources.taco
+        'TYLOO
+        picattacker.Image = My.Resources.attacker
+        picDD.Image = My.Resources.dd
+        picfancy1.Image = My.Resources.fancy1
+        picMo.Image = My.Resources.mo
+        picsomebody.Image = My.Resources.somebody
+        'VP
+        picbyali.Image = My.Resources.byali
+        picneo.Image = My.Resources.neo
+        picpasha.Image = My.Resources.pasha
+        picsnax.Image = My.Resources.snax
+        pictaz.Image = My.Resources.taz
+#End Region
     End Sub
     Private Sub Correction_Tick(sender As Object, e As EventArgs) Handles Correction.Tick
         If Me.AutoScrollPosition.Y < 0 Then
             Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 0)
             Correction.Stop()
         End If
+
+        ' for checking scroll position, for jump to team
+        ' Me.Text = Me.AutoScrollPosition.Y
     End Sub
-#Region "Crosshairs"
-
-#End Region
-
-    Private Sub picSchokk_Click_1(sender As Object, e As EventArgs) Handles picSchokk.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+    Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
+#Region "crosshaircodes"
+        Select Case crossname
+            Case ""
+                crosshair = ""
+            Case "Schokk"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -48,12 +154,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: Schokk"
-    End Sub
-
-
-    Private Sub picgobb_Click(sender As Object, e As EventArgs) Handles picgobb.Click
-        crosshair = "cl_crosshair_drawoutline ""1""
+            Case "gob b"
+                crosshair = "cl_crosshair_drawoutline ""1""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -74,11 +176,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: gob b"
-    End Sub
-
-    Private Sub picPtr_Click(sender As Object, e As EventArgs) Handles picPtr.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "ptr"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -99,11 +198,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: ptr"
-    End Sub
-
-    Private Sub picLEGIJA_Click(sender As Object, e As EventArgs) Handles picLEGIJA.Click
-        crosshair = "cl_crosshair_drawoutline ""1""
+            Case "LEGIJA"
+                crosshair = "cl_crosshair_drawoutline ""1""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -124,11 +220,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: LEGIJA"
-    End Sub
-
-    Private Sub pictabseN_Click(sender As Object, e As EventArgs) Handles pictabseN.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "tabseN"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -149,11 +242,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: tabseN"
-    End Sub
-
-    Private Sub picfugly_Click(sender As Object, e As EventArgs) Handles picfugly.Click
-        crosshair = "cl_crosshair_drawoutline ""1""
+            Case "FugLy"
+                crosshair = "cl_crosshair_drawoutline ""1""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -174,11 +264,8 @@ cl_crosshairstyle ""5""
 cl_crosshairthickness ""1.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""-4.5"""
-        Me.Text = "Crosshair selector window - selected: FugLy"
-    End Sub
-
-    Private Sub pichooch_Click(sender As Object, e As EventArgs) Handles pichooch.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "hooch"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -199,11 +286,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: hooch"
-    End Sub
-
-    Private Sub picdosia_Click(sender As Object, e As EventArgs) Handles picdosia.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "Dosia"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -224,11 +308,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: Dosia"
-    End Sub
-
-    Private Sub picmou_Click(sender As Object, e As EventArgs) Handles picmou.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "mou"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -249,11 +330,8 @@ cl_crosshairstyle ""2""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: mou"
-    End Sub
-
-    Private Sub picAdren_Click(sender As Object, e As EventArgs) Handles picAdren.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "AdreN"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -274,11 +352,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: AdreN"
-    End Sub
-
-    Private Sub picspaze_Click(sender As Object, e As EventArgs) Handles picspaze.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "spaze"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -299,11 +374,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: spaze"
-    End Sub
-
-    Private Sub picblade_Click(sender As Object, e As EventArgs) Handles picblade.Click
-        crosshair = "cl_crosshair_drawoutline ""1""
+            Case "B1ad3"
+                crosshair = "cl_crosshair_drawoutline ""1""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -324,11 +396,8 @@ cl_crosshairstyle ""5""
 cl_crosshairthickness ""0.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: B1ad3"
-    End Sub
-
-    Private Sub picwe_Click(sender As Object, e As EventArgs) Handles picwe.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "WorldEdit"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -349,11 +418,8 @@ cl_crosshairstyle ""5""
 cl_crosshairthickness ""0""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: WorldEdit"
-    End Sub
-
-    Private Sub picmarkeloff_Click(sender As Object, e As EventArgs) Handles picmarkeloff.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "markeloff"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -374,11 +440,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: markeloff"
-    End Sub
-
-    Private Sub picwl_Click(sender As Object, e As EventArgs) Handles picwl.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "wayLander"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -399,11 +462,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: wayLander"
-    End Sub
-
-    Private Sub picangel_Click(sender As Object, e As EventArgs) Handles picangel.Click
-        crosshair = "cl_crosshair_drawoutline ""1""
+            Case "ANGE1"
+                crosshair = "cl_crosshair_drawoutline ""1""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -424,11 +484,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: ANGE1"
-    End Sub
-
-    Private Sub picstyko_Click(sender As Object, e As EventArgs) Handles picstyko.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "STYKO"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -449,11 +506,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""0""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: STYKO"
-    End Sub
-
-    Private Sub piczero_Click(sender As Object, e As EventArgs) Handles piczero.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "ZERO"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -474,10 +528,8 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1.5""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: ZERO"
-    End Sub
-    Private Sub picbondik_Click(sender As Object, e As EventArgs) Handles picbondik.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "bondik"
+                crosshair = "cl_crosshair_drawoutline ""0""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
@@ -498,18 +550,807 @@ cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: bondik"
-    End Sub
-
-    Private Sub picShara_Click(sender As Object, e As EventArgs) Handles picShara.Click
-        crosshair = "cl_crosshair_drawoutline ""0""
+            Case "Shara"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.5""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""4.5""
+cl_crosshairstyle ""1""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "cutler"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "hazed"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "koosta"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "subroza"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Semphis"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "FNS"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Relyks"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "SicK"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""0""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Twistzz"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""0.4""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "daps"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""80""
+cl_crosshaircolor_g ""50""
+cl_crosshaircolor_r ""200""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "mixwell"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""0""
+cl_crosshaircolor_b ""80""
+cl_crosshaircolor_g ""50""
+cl_crosshaircolor_r ""200""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "NAF"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""q""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""5""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "RUSH"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""80""
+cl_crosshaircolor_g ""50""
+cl_crosshaircolor_r ""200""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "tarik"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""80""
+cl_crosshaircolor_g ""50""
+cl_crosshaircolor_r ""200""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""1""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "AZR"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""255""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "jks"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""99999""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "yam"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""2""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""4""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""255""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "dev1ce"
+                crosshair = "cl_crosshair_drawoutline ""0""""
 cl_crosshair_dynamic_maxdist_splitratio ""0.35""
 cl_crosshair_dynamic_splitalpha_innermod ""1""
 cl_crosshair_dynamic_splitalpha_outermod ""0.5""
 cl_crosshair_dynamic_splitdist ""7""
 cl_crosshair_outlinethickness ""0.1""
-cl_crosshair_sniper_width ""2""
+cl_crosshair_sniper_width ""1""
 cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "dupreeh"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "karrigan"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.5""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "kjaerbye"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Xyp9x"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.7""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "autimatic"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""2""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "n0thing"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""0""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "shroud"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""250""
+cl_crosshaircolor_g ""200""
+cl_crosshaircolor_r ""120""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Skadoodle"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Stewie2k"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""80""
+cl_crosshaircolor_g ""50""
+cl_crosshaircolor_r ""200""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "cajunb"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""800""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""230""
+cl_crosshaircolor_g ""170""
+cl_crosshaircolor_r ""100""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "k0nfig"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""1000""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "magiskb0y"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness "".5""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""0""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.7""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "MSL"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "RUBINO"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.100000""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "apEX"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""6""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "DEVIL"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""6""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Happy"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""1.000000""
+cl_crosshair_dynamic_splitdist ""5""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.9""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "kennyS"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
 cl_crosshaircolor ""4""
 cl_crosshaircolor_b ""50""
 cl_crosshaircolor_g ""250""
@@ -517,18 +1358,2009 @@ cl_crosshaircolor_r ""50""
 cl_crosshairdot ""0""
 cl_crosshairgap ""-1""
 cl_crosshairgap_useweaponvalue ""0""
-cl_crosshairscale ""4""
-cl_crosshairsize ""2""
-cl_crosshairstyle ""1""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
 cl_crosshairthickness ""1""
 cl_crosshairusealpha ""1""
 cl_fixedcrosshairgap ""3"""
-        Me.Text = "Crosshair selector window - selected: Shara"
+            Case "NBK"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "byali"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""6""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "NEO"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""100""
+cl_crosshaircolor_r ""100""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-0.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "pasha"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Snax"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""0""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "TaZ"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "aizy"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "fox"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "jkaem"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""0""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "kioShiMa"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "rain"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "dennis"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Lekr0"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""-1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "olofmeister"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "twist"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "wenton"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.900000""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.3""
+cl_crosshair_dynamic_splitdist ""0""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""0""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "bodyy"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""500""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "RpK"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""999'""
+cl_crosshaircolor ""0""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "ScreaM"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""200""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""152.""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "shox"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""800""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""0.000000""
+cl_crosshaircolor_g ""255.000000""
+cl_crosshaircolor_r ""255.000000""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""2""
+cl_crosshairthickness ""1.15""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "SmithZz"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""200""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""152""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.15""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "flusha"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""999'""
+cl_crosshaircolor ""0""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "JW"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "KRIMZ"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""500""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "pronax"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "znajder"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "boltz"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "felps"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "HEN1"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""251""
+cl_crosshaircolor_g ""208""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "LUCAS1"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""251""
+cl_crosshaircolor_g ""208""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "SHOOWTiME"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "EliGE"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""1""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Hiko"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.5""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""300""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "jdm64"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.5""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""300""
+cl_crosshaircolor ""3""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4.5""
+cl_crosshairstyle ""1""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "nitr0"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.4""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""1""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3.5""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Pimp"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""0.100000""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""144""
+cl_crosshaircolor_g ""195""
+cl_crosshaircolor_r ""27""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""0.4""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "chrisJ"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""0""
+cl_crosshairgap ""1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "denis"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "nex"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""3.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "NiKo"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""5""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Spiidi"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""250""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "Edward"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "flamie"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""1""
+cl_crosshairscale ""1000""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "GuardiaN"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""0""
+cl_crosshairgap_useweaponvalue ""1""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "s1mple"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "seized"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "f0rest"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""999""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "friberg"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""99999""
+cl_crosshaircolor ""4.000000""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "GeT_RiGhT"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.15""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "pyth"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""4.5""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""4""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""4"""
+            Case "Xizt"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""3"""
+            Case "coldzera"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""2""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1.15""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "FalleN"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1.5""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "fer"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "fnx"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "TACO"
+                crosshair = "cl_crosshair_drawoutline ""1""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""1""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Attacker"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""0""
+cl_crosshaircolor_g ""0""
+cl_crosshaircolor_r ""255""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""4""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "DD"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.300000""
+cl_crosshair_dynamic_splitdist ""6""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-2""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0.5""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "fancy1"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""250""
+cl_crosshaircolor ""4""
+cl_crosshaircolor_b ""144""
+cl_crosshaircolor_g ""195""
+cl_crosshaircolor_r ""27""
+cl_crosshairdot ""1""
+cl_crosshairgap ""-3""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""3.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""0""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "Mo"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""200""
+cl_crosshaircolor ""1""
+cl_crosshaircolor_b ""50""
+cl_crosshaircolor_g ""250""
+cl_crosshaircolor_r ""50""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+            Case "somebody"
+                crosshair = "cl_crosshair_drawoutline ""0""
+cl_crosshair_dynamic_maxdist_splitratio ""0.35""
+cl_crosshair_dynamic_splitalpha_innermod ""1""
+cl_crosshair_dynamic_splitalpha_outermod ""0.5""
+cl_crosshair_dynamic_splitdist ""7""
+cl_crosshair_outlinethickness ""1""
+cl_crosshair_sniper_width ""1""
+cl_crosshairalpha ""255""
+cl_crosshaircolor ""5""
+cl_crosshaircolor_b ""255""
+cl_crosshaircolor_g ""255""
+cl_crosshaircolor_r ""0""
+cl_crosshairdot ""0""
+cl_crosshairgap ""-1""
+cl_crosshairgap_useweaponvalue ""0""
+cl_crosshairscale ""0""
+cl_crosshairsize ""2.5""
+cl_crosshairstyle ""4""
+cl_crosshairthickness ""1""
+cl_crosshairusealpha ""1""
+cl_fixedcrosshairgap ""-4.5"""
+
+
+        End Select
+#End Region
+        frmMain.globalcrosshair = crosshair
+        frmMain.globalcrossname = crossname
+        Me.Close()
+    End Sub
+
+
+#Region "Crosshair selections"
+    Private Sub picNone_Click(sender As Object, e As EventArgs) Handles picNone.Click
+        crossname = ""
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picSchokk_Click(sender As Object, e As EventArgs) Handles picSchokk.Click
+        crossname = "Schokk"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picgobb_Click(sender As Object, e As EventArgs) Handles picgobb.Click
+        crossname = "gob b"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picPtr_Click(sender As Object, e As EventArgs) Handles picPtr.Click
+        crossname = "ptr"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picLEGIJA_Click(sender As Object, e As EventArgs) Handles picLEGIJA.Click
+        crossname = "LEGIJA"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pictabseN_Click(sender As Object, e As EventArgs) Handles pictabseN.Click
+        crossname = "tabseN"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfugly_Click(sender As Object, e As EventArgs) Handles picfugly.Click
+        crossname = "FugLy"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pichooch_Click(sender As Object, e As EventArgs) Handles pichooch.Click
+        crossname = "hooch"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdosia_Click(sender As Object, e As EventArgs) Handles picdosia.Click
+        crossname = "Dosia"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picmou_Click(sender As Object, e As EventArgs) Handles picmou.Click
+        crossname = "mou"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picAdren_Click(sender As Object, e As EventArgs) Handles picAdren.Click
+        crossname = "AdreN"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picspaze_Click(sender As Object, e As EventArgs) Handles picspaze.Click
+        crossname = "spaze"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picblade_Click(sender As Object, e As EventArgs) Handles picblade.Click
+        crossname = "B1ad3"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picwe_Click(sender As Object, e As EventArgs) Handles picwe.Click
+        crossname = "WorldEdit"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picmarkeloff_Click(sender As Object, e As EventArgs) Handles picmarkeloff.Click
+        crossname = "markeloff"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picwl_Click(sender As Object, e As EventArgs) Handles picwl.Click
+        crossname = "wayLander"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picangel_Click(sender As Object, e As EventArgs) Handles picangel.Click
+        crossname = "ANGE1"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picstyko_Click(sender As Object, e As EventArgs) Handles picstyko.Click
+        crossname = "STYKO"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub piczero_Click(sender As Object, e As EventArgs) Handles piczero.Click
+        crossname = "ZERO"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+    Private Sub picbondik_Click(sender As Object, e As EventArgs) Handles picbondik.Click
+        crossname = "bondik"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picShara_Click(sender As Object, e As EventArgs) Handles picShara.Click
+        crossname = "Shara"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picCutler_Click(sender As Object, e As EventArgs) Handles picCutler.Click
+        crossname = "cutler"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picHazed_Click(sender As Object, e As EventArgs) Handles picHazed.Click
+        crossname = "hazed"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picKoosta_Click(sender As Object, e As EventArgs) Handles picKoosta.Click
+        crossname = "koosta"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picSubroza_Click(sender As Object, e As EventArgs) Handles picSubroza.Click
+        crossname = "subroza"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfns_Click(sender As Object, e As EventArgs) Handles picfns.Click
+        crossname = "FNS"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picrelyks_Click(sender As Object, e As EventArgs) Handles picrelyks.Click
+        crossname = "Relyks"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picsemphis_Click(sender As Object, e As EventArgs) Handles picsemphis.Click
+        crossname = "Semphis"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picsick_Click(sender As Object, e As EventArgs) Handles picsick.Click
+        crossname = "SicK"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pictwistzz_Click(sender As Object, e As EventArgs) Handles pictwistzz.Click
+        crossname = "Twistzz"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdaps_Click(sender As Object, e As EventArgs) Handles picdaps.Click
+        crossname = "daps"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picmixwell_Click(sender As Object, e As EventArgs) Handles picmixwell.Click
+        crossname = "mixwell"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picNAF_Click(sender As Object, e As EventArgs) Handles picNAF.Click
+        crossname = "NAF"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picRUSH_Click(sender As Object, e As EventArgs) Handles picRUSH.Click
+        crossname = "RUSH"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pictarik_Click(sender As Object, e As EventArgs) Handles pictarik.Click
+        crossname = "tarik"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picazr_Click(sender As Object, e As EventArgs) Handles picazr.Click
+        crossname = "AZR"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picjks_Click(sender As Object, e As EventArgs) Handles picjks.Click
+        crossname = "jks"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picyam_Click(sender As Object, e As EventArgs) Handles picyam.Click
+        crossname = "yam"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdevice_Click(sender As Object, e As EventArgs) Handles picdevice.Click
+        crossname = "dev1ce"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdupreeh_Click(sender As Object, e As EventArgs) Handles picdupreeh.Click
+        crossname = "dupreeh"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickarrigan_Click(sender As Object, e As EventArgs) Handles pickarrigan.Click
+        crossname = "karrigan"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickjaerbye_Click(sender As Object, e As EventArgs) Handles pickjaerbye.Click
+        crossname = "kjaerbye"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picxyp9x_Click(sender As Object, e As EventArgs) Handles picxyp9x.Click
+        crossname = "Xyp9x"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picautimatic_Click(sender As Object, e As EventArgs) Handles picautimatic.Click
+        crossname = "autimatic"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picnothing_Click(sender As Object, e As EventArgs) Handles picnothing.Click
+        crossname = "n0thing"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picshroud_Click(sender As Object, e As EventArgs) Handles picshroud.Click
+        crossname = "shroud"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picskadoodle_Click(sender As Object, e As EventArgs) Handles picskadoodle.Click
+        crossname = "Skadoodle"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picstewie2k_Click(sender As Object, e As EventArgs) Handles picstewie2k.Click
+        crossname = "Stewie2k"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub piccajunb_Click(sender As Object, e As EventArgs) Handles piccajunb.Click
+        crossname = "cajunb"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickonfig_Click(sender As Object, e As EventArgs) Handles pickonfig.Click
+        crossname = "k0nfig"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picmagiskboy_Click(sender As Object, e As EventArgs) Handles picmagiskboy.Click
+        crossname = "magiskb0y"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picMSL_Click(sender As Object, e As EventArgs) Handles picMSL.Click
+        crossname = "MSL"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picRUBINO_Click(sender As Object, e As EventArgs) Handles picRUBINO.Click
+        crossname = "RUBINO"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picapex_Click(sender As Object, e As EventArgs) Handles picapex.Click
+        crossname = "apEX"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdevil_Click(sender As Object, e As EventArgs) Handles picdevil.Click
+        crossname = "DEVIL"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pichappy_Click(sender As Object, e As EventArgs) Handles pichappy.Click
+        crossname = "Happy"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickennys_Click(sender As Object, e As EventArgs) Handles pickennys.Click
+        crossname = "kennyS"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picnbk_Click(sender As Object, e As EventArgs) Handles picnbk.Click
+        crossname = "NBK"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+    Private Sub pictaz_Click(sender As Object, e As EventArgs) Handles pictaz.Click
+        crossname = "TaZ"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picsnax_Click(sender As Object, e As EventArgs) Handles picsnax.Click
+        crossname = "Snax"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picpasha_Click(sender As Object, e As EventArgs) Handles picpasha.Click
+        crossname = "pasha"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picneo_Click(sender As Object, e As EventArgs) Handles picneo.Click
+        crossname = "NEO"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picbyali_Click(sender As Object, e As EventArgs) Handles picbyali.Click
+        crossname = "byali"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picsomebody_Click(sender As Object, e As EventArgs) Handles picsomebody.Click
+        crossname = "somebody"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picMo_Click(sender As Object, e As EventArgs) Handles picMo.Click
+        crossname = "Mo"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfancy1_Click(sender As Object, e As EventArgs) Handles picfancy1.Click
+        crossname = "fancy1"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picDD_Click(sender As Object, e As EventArgs) Handles picDD.Click
+        crossname = "DD"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picattacker_Click(sender As Object, e As EventArgs) Handles picattacker.Click
+        crossname = "Attacker"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pictaco_Click(sender As Object, e As EventArgs) Handles pictaco.Click
+        crossname = "TACO"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfnx_Click(sender As Object, e As EventArgs) Handles picfnx.Click
+        crossname = "fnx"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfer_Click(sender As Object, e As EventArgs) Handles picfer.Click
+        crossname = "fer"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfallen_Click(sender As Object, e As EventArgs) Handles picfallen.Click
+        crossname = "FalleN"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub piccoldzera_Click(sender As Object, e As EventArgs) Handles piccoldzera.Click
+        crossname = "coldzera"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picforest_Click(sender As Object, e As EventArgs) Handles picforest.Click
+        crossname = "f0rest"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfriberg_Click(sender As Object, e As EventArgs) Handles picfriberg.Click
+        crossname = "friberg"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picgetright_Click(sender As Object, e As EventArgs) Handles picgetright.Click
+        crossname = "GeT_RiGhT"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picpyth_Click(sender As Object, e As EventArgs) Handles picpyth.Click
+        crossname = "pyth"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picxizt_Click(sender As Object, e As EventArgs) Handles picxizt.Click
+        crossname = "Xizt"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picseized_Click(sender As Object, e As EventArgs) Handles picseized.Click
+        crossname = "seized"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pics1mple_Click(sender As Object, e As EventArgs) Handles pics1mple.Click
+        crossname = "s1mple"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picguardian_Click(sender As Object, e As EventArgs) Handles picguardian.Click
+        crossname = "GuardiaN"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picflamie_Click(sender As Object, e As EventArgs) Handles picflamie.Click
+        crossname = "flamie"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picedward_Click(sender As Object, e As EventArgs) Handles picedward.Click
+        crossname = "Edward"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picspiidi_Click(sender As Object, e As EventArgs) Handles picspiidi.Click
+        crossname = "Spiidi"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picniko_Click(sender As Object, e As EventArgs) Handles picniko.Click
+        crossname = "NiKo"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picnex_Click(sender As Object, e As EventArgs) Handles picnex.Click
+        crossname = "nex"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdenis_Click(sender As Object, e As EventArgs) Handles picdenis.Click
+        crossname = "denis"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picchrisj_Click(sender As Object, e As EventArgs) Handles picchrisj.Click
+        crossname = "chrisJ"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picpimp_Click(sender As Object, e As EventArgs) Handles picpimp.Click
+        crossname = "Pimp"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picnitr0_Click(sender As Object, e As EventArgs) Handles picnitr0.Click
+        crossname = "nitr0"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picjdm_Click(sender As Object, e As EventArgs) Handles picjdm.Click
+        crossname = "jdm64"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pichiko_Click(sender As Object, e As EventArgs) Handles pichiko.Click
+        crossname = "Hiko"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picelige_Click(sender As Object, e As EventArgs) Handles picelige.Click
+        crossname = "EliGE"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picshoowtime_Click(sender As Object, e As EventArgs) Handles picshoowtime.Click
+        crossname = "SHOOWTiME"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub piclucas1_Click(sender As Object, e As EventArgs) Handles piclucas1.Click
+        crossname = "LUCAS1"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pichen1_Click(sender As Object, e As EventArgs) Handles pichen1.Click
+        crossname = "HEN1"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfelps_Click(sender As Object, e As EventArgs) Handles picfelps.Click
+        crossname = "felps"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picboltz_Click(sender As Object, e As EventArgs) Handles picboltz.Click
+        crossname = "boltz"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picznajder_Click(sender As Object, e As EventArgs) Handles picznajder.Click
+        crossname = "znajder"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picpronax_Click(sender As Object, e As EventArgs) Handles picpronax.Click
+        crossname = "pronax"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickrimz_Click(sender As Object, e As EventArgs) Handles pickrimz.Click
+        crossname = "KRIMZ"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picjw_Click(sender As Object, e As EventArgs) Handles picjw.Click
+        crossname = "JW"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picflusha_Click(sender As Object, e As EventArgs) Handles picflusha.Click
+        crossname = "flusha"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picsmithzz_Click(sender As Object, e As EventArgs) Handles picsmithzz.Click
+        crossname = "SmithZz"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picshox_Click(sender As Object, e As EventArgs) Handles picshox.Click
+        crossname = "shox"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picscream_Click(sender As Object, e As EventArgs) Handles picscream.Click
+        crossname = "ScreaM"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picrpk_Click(sender As Object, e As EventArgs) Handles picrpk.Click
+        crossname = "RpK"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picbodyy_Click(sender As Object, e As EventArgs) Handles picbodyy.Click
+        crossname = "bodyy"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picwenton_Click(sender As Object, e As EventArgs) Handles picwenton.Click
+        crossname = "wenton"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pictwist_Click(sender As Object, e As EventArgs) Handles pictwist.Click
+        crossname = "twist"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picolof_Click(sender As Object, e As EventArgs) Handles picolof.Click
+        crossname = "olofmeister"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub piclekro_Click(sender As Object, e As EventArgs) Handles piclekro.Click
+        crossname = "Lekr0"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picdennis_Click(sender As Object, e As EventArgs) Handles picdennis.Click
+        crossname = "dennis"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picrain_Click(sender As Object, e As EventArgs) Handles picrain.Click
+        crossname = "rain"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub pickioshima_Click(sender As Object, e As EventArgs) Handles pickioshima.Click
+        crossname = "kioShiMa"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picjkaem_Click(sender As Object, e As EventArgs) Handles picjkaem.Click
+        crossname = "jkaem"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picfox_Click(sender As Object, e As EventArgs) Handles picfox.Click
+        crossname = "fox"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+
+    Private Sub picaizy_Click(sender As Object, e As EventArgs) Handles picaizy.Click
+        crossname = "aizy"
+        Me.Text = "Crosshair selector window - selected: " & crossname
+    End Sub
+#End Region
+
+    Private Sub comboTeam_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboTeam.SelectedIndexChanged
+        If comboTeam.SelectedIndex = 0 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183)
+        ElseIf comboTeam.SelectedIndex = 1 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + 165)
+        ElseIf comboTeam.SelectedIndex = 2 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (2 * 165))
+        ElseIf comboTeam.SelectedIndex = 3 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (3 * 165))
+        ElseIf comboTeam.SelectedIndex = 4 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (4 * 165))
+        ElseIf comboTeam.SelectedIndex = 5 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (5 * 165))
+        ElseIf comboTeam.SelectedIndex = 6 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (6 * 165))
+        ElseIf comboTeam.SelectedIndex = 7 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (7 * 165))
+        ElseIf comboTeam.SelectedIndex = 8 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (8 * 165))
+        ElseIf comboTeam.SelectedIndex = 9 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (9 * 165))
+        ElseIf comboTeam.SelectedIndex = 10 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (10 * 165))
+        ElseIf comboTeam.SelectedIndex = 11 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (11 * 165))
+        ElseIf comboTeam.SelectedIndex = 12 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (12 * 165))
+        ElseIf comboTeam.SelectedIndex = 13 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (13 * 165))
+        ElseIf comboTeam.SelectedIndex = 14 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (14 * 165))
+        ElseIf comboTeam.SelectedIndex = 15 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (15 * 165))
+        ElseIf comboTeam.SelectedIndex = 16 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (16 * 165))
+        ElseIf comboTeam.SelectedIndex = 17 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (17 * 165))
+        ElseIf comboTeam.SelectedIndex = 18 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (18 * 165))
+        ElseIf comboTeam.SelectedIndex = 19 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (19 * 165))
+        ElseIf comboTeam.SelectedIndex = 20 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (20 * 165))
+        ElseIf comboTeam.SelectedIndex = 21 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (21 * 165))
+        ElseIf comboTeam.SelectedIndex = 22 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (22 * 165))
+        ElseIf comboTeam.SelectedIndex = 23 Then
+            Me.AutoScrollPosition = New Point(Math.Abs(Me.AutoScrollPosition.X), 183 + (23 * 165))
+        End If
     End Sub
 
     Private Sub Crosshair_selector_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If crosshair = "" Then
-            If MsgBox("You have not chosen any crosshair from the list." & vbLf & "Would you like to close anyway?", MsgBoxStyle.YesNo, "No selection") = MsgBoxResult.No Then
+            If MsgBox("You have not chosen any crosshair from the list and pressed the confirm button." & vbLf & "Would you like to close anyway?", MsgBoxStyle.YesNo, "No selection") = MsgBoxResult.No Then
                 e.Cancel = True
                 Correction.Start()
             End If

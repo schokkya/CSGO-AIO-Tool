@@ -78,11 +78,11 @@
     <Compile Include="Crosshair selector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -105,8 +105,8 @@
     <EmbeddedResource Include="Crosshair selector.resx">
       <DependentUpon>Crosshair selector.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -195,6 +195,309 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\reservedhr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cutler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hazed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\koosta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NahtE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subroza.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relyks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\semphis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twistzz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\daps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mixwell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NAF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RUSH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tarik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AZR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rickeh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ustilo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\device.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dupreeh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\karrigan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kjaerbye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xyp9x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autimatic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\n0thing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shroud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skadoodle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stewie2k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cajunb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\k0nfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magiskb0y.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MSL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RUBINO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\devil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Happy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kennys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nbk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aizy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jkaem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kioshima.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dennis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lekro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\olofmeister.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wenton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bodyy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rpk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scream.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smithzz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flusha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\krimz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pronax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\znajder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boltz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\felps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HEN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LUCAS1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoowtime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elige.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hiko.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jdm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nitro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pimp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chrisj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\denis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\niko.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spiidi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flamie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\friberg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\getright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pyth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xizt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coldzera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fnx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\taco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attacker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fancy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\somebody.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\byali.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\neo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pasha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\taz.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
