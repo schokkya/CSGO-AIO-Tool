@@ -1,6 +1,7 @@
 ﻿Public Class frmMain
     Dim globalsteampath, globalcsgopath As String
     Public globalcrosshair, globalcrossname As String
+    Dim textmod As Boolean
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblWelcome.Text = "Welcome to CSGO AIO Tool!" & vbLf & "This tool allows you to optimize your computer/game it self for CSGO for a gaming experience." & vbLf & vbLf & "First let's start off by creating a backup of your CSGO files before we make any changes (RECOMMENDED)."
@@ -14,7 +15,35 @@
                 lblCSGOpath.Text = "CSGO PATH: " & vbNewLine & globalcsgopath.ToString
             End If
         End If
+        GetRefreshRate()
     End Sub
+
+    Public Function ApplyTextMod() As Boolean
+        If globalcsgopath IsNot Nothing Then
+            If Not IO.File.Exists(globalcsgopath & "\resource\csgo_textmodorel.txt") Then
+                IO.File.WriteAllText(globalcsgopath & "\resource\csgo_textmodorel.txt", My.Resources.csgo_textmodorel)
+                Return True
+            Else
+                Return True
+            End If
+        Else
+            txtStatus.Text &= "[-] CSGO path was not found, cannot apply text mod"
+            Return False
+        End If
+    End Function
+
+    Public Function GetRefreshRate() As Integer
+        Dim refresh As Integer
+        Dim query As New System.Management.SelectQuery("Win32_VideoController")
+        For Each obj As System.Management.ManagementObject In New System.Management.ManagementObjectSearcher(query).Get
+            Dim CurrentRefreshRate As Object = obj("CurrentRefreshRate")
+            If CurrentRefreshRate IsNot Nothing Then
+                refresh = CInt(CurrentRefreshRate)
+            End If
+        Next
+        Return refresh
+    End Function
+
     Public Function SetLaunchOptions(ByVal options As String) As String
         'Credits: Peter "rave" Ipsen
         '         Michael "bone" Hansen
@@ -64,58 +93,66 @@
                 If y.Contains("""") Then
                     y = y.Replace("""", "")
                 End If
-                Return "[+] Resolution: " & x & " " & y
+                Return x & " " & y
             End If
         Next
-        Return "[-] There was an issue retrieving current resolution"
+        Return "NO RES FOUND"
     End Function
 
     Public Function CreateBackup()
-        Dim DateToday As String = String.Format("{0:dd.MM.yyyy - h.mm}", DateTime.Now)
+        Dim DateToday As String = String.Format("{0:dd.MM.yyyy - HH.mm}", DateTime.Now)
         Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
         If Not IO.Directory.Exists(Application.StartupPath & "\Backups") Then
             IO.Directory.CreateDirectory(Application.StartupPath & "\Backups")
             If Not IO.Directory.Exists(Application.StartupPath & "\Backups\" & DateToday) Then
                 IO.Directory.CreateDirectory(Application.StartupPath & "\Backups\" & DateToday)
-
                 For Each dir As String In dirs
                     If IO.Directory.Exists(dir & "\730\local\cfg") Then
                         If IO.File.Exists(dir & "\730\local\cfg\config.cfg") Then
-                            IO.File.Copy(dir & "\730\local\cfg\config.cfg", Application.StartupPath & "\Backups\" & DateToday & "\config.cfg")
-                            txtStatus.Text &= "[+] config.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\config.cfg") Then
+                                IO.File.Copy(dir & "\730\local\cfg\config.cfg", Application.StartupPath & "\Backups\" & DateToday & "\config.cfg")
+                                txtStatus.Text &= "[+] config.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            End If
                         End If
                         If IO.File.Exists(dir & "\730\local\cfg\video.txt") Then
-                            IO.File.Copy(dir & "\730\local\cfg\video.txt", Application.StartupPath & "\Backups\" & DateToday & "\video.txt")
-                            txtStatus.Text &= "[+] video.txt found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\video.txt") Then
+                                IO.File.Copy(dir & "\730\local\cfg\video.txt", Application.StartupPath & "\Backups\" & DateToday & "\video.txt")
+                                txtStatus.Text &= "[+] video.txt found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            End If
                         End If
                     End If
                 Next
-
                 If IO.File.Exists(globalcsgopath & "\cfg\autoexec.cfg") Then
-                    IO.File.Copy((globalcsgopath & "\cfg\autoexec.cfg"), Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg")
-                    txtStatus.Text &= "[+] autoexec.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                    If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg") Then
+                        IO.File.Copy((globalcsgopath & "\cfg\autoexec.cfg"), Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg")
+                        txtStatus.Text &= "[+] autoexec.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                    End If
                 End If
             End If
         Else
             If Not IO.Directory.Exists(Application.StartupPath & "\Backups\" & DateToday) Then
                 IO.Directory.CreateDirectory(Application.StartupPath & "\Backups\" & DateToday)
-
                 For Each dir As String In dirs
                     If IO.Directory.Exists(dir & "\730\local\cfg") Then
                         If IO.File.Exists(dir & "\730\local\cfg\config.cfg") Then
-                            IO.File.Copy(dir & "\730\local\cfg\config.cfg", Application.StartupPath & "\Backups\" & DateToday & "\config.cfg")
-                            txtStatus.Text &= "[+] config.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\config.cfg") Then
+                                IO.File.Copy(dir & "\730\local\cfg\config.cfg", Application.StartupPath & "\Backups\" & DateToday & "\config.cfg")
+                                txtStatus.Text &= "[+] config.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            End If
                         End If
                         If IO.File.Exists(dir & "\730\local\cfg\video.txt") Then
-                            IO.File.Copy(dir & "\730\local\cfg\video.txt", Application.StartupPath & "\Backups\" & DateToday & "\video.txt")
-                            txtStatus.Text &= "[+] video.txt found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\video.txt") Then
+                                IO.File.Copy(dir & "\730\local\cfg\video.txt", Application.StartupPath & "\Backups\" & DateToday & "\video.txt")
+                                txtStatus.Text &= "[+] video.txt found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                            End If
                         End If
                     End If
                 Next
-
                 If IO.File.Exists(globalcsgopath & "\cfg\autoexec.cfg") Then
-                    IO.File.Copy((globalcsgopath & "\cfg\autoexec.cfg"), Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg")
-                    txtStatus.Text &= "[+] autoexec.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                    If Not IO.File.Exists(Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg") Then
+                        IO.File.Copy((globalcsgopath & "\cfg\autoexec.cfg"), Application.StartupPath & "\Backups\" & DateToday & "\autoexec.cfg")
+                        txtStatus.Text &= "[+] autoexec.cfg found and copied to: " & Application.StartupPath & "\Backups\" & DateToday & vbNewLine
+                    End If
                 End If
             End If
         End If
@@ -146,10 +183,6 @@
 
     Private Sub btnCrosshairselector_Click(sender As Object, e As EventArgs) Handles btnCrosshairselector.Click
         Crosshair_selector.Show()
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        txtStatus.Text &= SetLaunchOptions("-high")
     End Sub
 
     Public Function GetSteamFolder() As String

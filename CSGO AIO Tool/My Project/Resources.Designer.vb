@@ -211,6 +211,30 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to //created by Orel
+        '''//visit http://convars.com
+        '''&quot;lang&quot;
+        '''{
+        '''&quot;Language&quot; &quot;English&quot;
+        '''&quot;Tokens&quot;
+        '''{ 
+        '''// ---------------------------------------------------------------------------------------------
+        '''// GAMEUI_ENGLISH.txt
+        '''
+        '''		&quot;Cstrike_TitlesTXT_Game_teammate_attack&quot; &quot; %s1 attacked a teammate.&quot;
+        '''		
+        '''		&quot;Player_Cash_Award_Kill_Teammate&quot;		&quot; %s1: Teamkill&quot;
+        '''		&quot;Player_Cash_Award_Killed_Enemy_Generic&quot; &quot; %s1: Enemy down&quot;
+        '''		&quot;Player_Cash_Award_Killed_Enemy&quot;		&quot; %s1: %s2 award&quot;
+        '''		&quot;Player_Cash_Award_Bomb_Planted&quot;		&quot;  [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property csgo_textmodorel() As String
+            Get
+                Return ResourceManager.GetString("csgo_textmodorel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property cutler() As System.Drawing.Bitmap

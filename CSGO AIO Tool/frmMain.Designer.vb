@@ -34,7 +34,6 @@ Partial Class frmMain
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.tabfrm.SuspendLayout()
         Me.tabWelcome.SuspendLayout()
         Me.SuspendLayout()
@@ -54,7 +53,6 @@ Partial Class frmMain
         '
         'tabWelcome
         '
-        Me.tabWelcome.Controls.Add(Me.Button1)
         Me.tabWelcome.Controls.Add(Me.btnCrosshairselector)
         Me.tabWelcome.Controls.Add(Me.btnIncorrectpath)
         Me.tabWelcome.Controls.Add(Me.lblCSGOpath)
@@ -80,7 +78,7 @@ Partial Class frmMain
         '
         'btnIncorrectpath
         '
-        Me.btnIncorrectpath.Location = New System.Drawing.Point(11, 172)
+        Me.btnIncorrectpath.Location = New System.Drawing.Point(11, 106)
         Me.btnIncorrectpath.Name = "btnIncorrectpath"
         Me.btnIncorrectpath.Size = New System.Drawing.Size(129, 23)
         Me.btnIncorrectpath.TabIndex = 4
@@ -90,7 +88,7 @@ Partial Class frmMain
         'lblCSGOpath
         '
         Me.lblCSGOpath.AutoSize = True
-        Me.lblCSGOpath.Location = New System.Drawing.Point(8, 138)
+        Me.lblCSGOpath.Location = New System.Drawing.Point(11, 71)
         Me.lblCSGOpath.Name = "lblCSGOpath"
         Me.lblCSGOpath.Size = New System.Drawing.Size(63, 13)
         Me.lblCSGOpath.TabIndex = 3
@@ -99,10 +97,10 @@ Partial Class frmMain
         'txtStatus
         '
         Me.txtStatus.Enabled = False
-        Me.txtStatus.Location = New System.Drawing.Point(413, 81)
+        Me.txtStatus.Location = New System.Drawing.Point(292, 106)
         Me.txtStatus.Multiline = True
         Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.Size = New System.Drawing.Size(327, 311)
+        Me.txtStatus.Size = New System.Drawing.Size(448, 286)
         Me.txtStatus.TabIndex = 2
         '
         'btnBackup
@@ -163,15 +161,6 @@ Partial Class frmMain
         Me.TabPage5.Text = "TabPage5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(14, 265)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,5 +188,4 @@ Partial Class frmMain
     Friend WithEvents lblCSGOpath As Label
     Friend WithEvents btnIncorrectpath As Button
     Friend WithEvents btnCrosshairselector As Button
-    Friend WithEvents Button1 As Button
 End Class
