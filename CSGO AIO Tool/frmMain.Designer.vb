@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.tabfrm = New System.Windows.Forms.TabControl()
         Me.tabWelcome = New System.Windows.Forms.TabPage()
+        Me.btnCrosshairselector = New System.Windows.Forms.Button()
         Me.btnIncorrectpath = New System.Windows.Forms.Button()
         Me.lblCSGOpath = New System.Windows.Forms.Label()
         Me.txtStatus = New System.Windows.Forms.TextBox()
@@ -33,7 +34,7 @@ Partial Class frmMain
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.btnCrosshairselector = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.tabfrm.SuspendLayout()
         Me.tabWelcome.SuspendLayout()
         Me.SuspendLayout()
@@ -53,6 +54,7 @@ Partial Class frmMain
         '
         'tabWelcome
         '
+        Me.tabWelcome.Controls.Add(Me.Button1)
         Me.tabWelcome.Controls.Add(Me.btnCrosshairselector)
         Me.tabWelcome.Controls.Add(Me.btnIncorrectpath)
         Me.tabWelcome.Controls.Add(Me.lblCSGOpath)
@@ -66,6 +68,15 @@ Partial Class frmMain
         Me.tabWelcome.TabIndex = 0
         Me.tabWelcome.Text = "Welcome"
         Me.tabWelcome.UseVisualStyleBackColor = True
+        '
+        'btnCrosshairselector
+        '
+        Me.btnCrosshairselector.Location = New System.Drawing.Point(11, 236)
+        Me.btnCrosshairselector.Name = "btnCrosshairselector"
+        Me.btnCrosshairselector.Size = New System.Drawing.Size(129, 23)
+        Me.btnCrosshairselector.TabIndex = 5
+        Me.btnCrosshairselector.Text = "Select crosshair"
+        Me.btnCrosshairselector.UseVisualStyleBackColor = True
         '
         'btnIncorrectpath
         '
@@ -152,14 +163,14 @@ Partial Class frmMain
         Me.TabPage5.Text = "TabPage5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'btnCrosshairselector
+        'Button1
         '
-        Me.btnCrosshairselector.Location = New System.Drawing.Point(11, 236)
-        Me.btnCrosshairselector.Name = "btnCrosshairselector"
-        Me.btnCrosshairselector.Size = New System.Drawing.Size(129, 23)
-        Me.btnCrosshairselector.TabIndex = 5
-        Me.btnCrosshairselector.Text = "Select crosshair"
-        Me.btnCrosshairselector.UseVisualStyleBackColor = True
+        Me.Button1.Location = New System.Drawing.Point(14, 265)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -188,4 +199,5 @@ Partial Class frmMain
     Friend WithEvents lblCSGOpath As Label
     Friend WithEvents btnIncorrectpath As Button
     Friend WithEvents btnCrosshairselector As Button
+    Friend WithEvents Button1 As Button
 End Class

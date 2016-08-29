@@ -21,11 +21,11 @@
         Dim success As Boolean = False
         Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
         For Each dir As String In dirs
-            If IO.File.Exists(dir & Convert.ToString("\config\localconfig.vdf")) Then
-                Dim localconfig As List(Of String) = IO.File.ReadAllLines(dir & Convert.ToString("\config\localconfig.vdf")).ToList()
-                For i As Integer = 0 To localconfig.Count() - 1
+            If IO.File.Exists(dir & "\config\localconfig.vdf") Then
+                Dim localconfig As List(Of String) = IO.File.ReadAllLines(dir & "\config\localconfig.vdf").ToList()
+                For i = 0 To localconfig.Count - 1
                     If localconfig(i) = vbTab & vbTab & vbTab & vbTab & vbTab & """730""" Then
-                        For j As Integer = i To localconfig.Count() - 1
+                        For j = i To localconfig.Count - 1
                             If localconfig(j) = vbTab & vbTab & vbTab & vbTab & vbTab & "}" Then
                                 Exit For
                             ElseIf localconfig(j).Contains("LaunchOptions") Then
@@ -46,6 +46,30 @@
             Return "ERROR: No launch options found. " & vbNewLine
         End If
     End Function
+
+    Public Function GetCurrentResolution() As String
+        Dim TempArray(22) As String
+        Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
+        For Each dir As String In dirs
+            If IO.File.Exists(dir & "\730\local\cfg\video.txt") Then
+                Dim videotxt As List(Of String) = IO.File.ReadAllLines(dir & "\730\local\cfg\video.txt").ToList()
+                For i = 0 To videotxt.Count - 2
+                    TempArray(i) = videotxt(i)
+                Next
+                Dim x As String = TempArray(17).Remove(0, 24)
+                Dim y As String = TempArray(18).Remove(0, 30)
+                If x.Contains("""") Then
+                    x = x.Replace("""", "")
+                End If
+                If y.Contains("""") Then
+                    y = y.Replace("""", "")
+                End If
+                Return "[+] Resolution: " & x & " " & y
+            End If
+        Next
+        Return "[-] There was an issue retrieving current resolution"
+    End Function
+
     Public Function CreateBackup()
         Dim DateToday As String = String.Format("{0:dd.MM.yyyy - h.mm}", DateTime.Now)
         Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
@@ -122,6 +146,10 @@
 
     Private Sub btnCrosshairselector_Click(sender As Object, e As EventArgs) Handles btnCrosshairselector.Click
         Crosshair_selector.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        txtStatus.Text &= SetLaunchOptions("-high")
     End Sub
 
     Public Function GetSteamFolder() As String
