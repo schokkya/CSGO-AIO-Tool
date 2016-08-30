@@ -617,6 +617,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property keyboard_us() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("keyboard_us", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property kioshima() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("kioshima", resourceCulture)
@@ -1200,6 +1210,16 @@ Namespace My.Resources
         Friend ReadOnly Property taz() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("taz", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property transparent() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("transparent", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
