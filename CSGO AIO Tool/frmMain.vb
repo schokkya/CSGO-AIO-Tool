@@ -3,6 +3,10 @@
     Public globalcrosshair, globalcrossname, currentkey As String
     Dim OSversion As Integer
 
+
+    Dim bindw, binda, binds, bindd, bindq, bindz As String
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         globalsteampath = GetSteamFolder()
         GetRefreshRate()
@@ -616,11 +620,33 @@
             btna.Location = New Point(287, 184)
             btnz.Location = New Point(322, 237)
             btnq.Location = New Point(265, 132)
+            If chckdecals.Checked = True Then
+                bindw = "bind ""w"" ""+forward; r_cleardecals"""
+                binda = "bind ""a"" ""+moveleft; r_cleardecals"""
+                binds = "bind ""s"" ""+back; r_cleardecals"""
+                bindd = "bind ""d"" ""+moveright; r_cleardecals"""
+            Else
+                bindw = "bind ""w"" ""+forward"""
+                binda = "bind ""a"" ""+moveleft"""
+                binds = "bind ""s"" ""+back"""
+                bindd = "bind ""d"" ""+moveright"""
+            End If
         Else
             btnw.Location = New Point(322, 238)
             btna.Location = New Point(265, 132)
             btnz.Location = New Point(318, 132)
             btnq.Location = New Point(285, 184)
+            If chckdecals.Checked = True Then
+                bindz = "bind ""z"" ""+forward; r_cleardecals"""
+                bindq = "bind ""q"" ""+moveleft; r_cleardecals"""
+                binds = "bind ""s"" ""+back; r_cleardecals"""
+                bindd = "bind ""d"" ""+moveright; r_cleardecals"""
+            Else
+                bindz = "bind ""z"" ""+forward"""
+                bindq = "bind ""q"" ""+moveleft"""
+                binds = "bind ""s"" ""+back"""
+                bindd = "bind ""d"" ""+moveright"""
+            End If
         End If
     End Sub
 

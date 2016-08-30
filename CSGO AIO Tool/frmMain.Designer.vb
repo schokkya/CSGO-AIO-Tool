@@ -108,9 +108,10 @@ Partial Class frmMain
         Me.radZQSD = New System.Windows.Forms.RadioButton()
         Me.radWASD = New System.Windows.Forms.RadioButton()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.btnCrosshairselector = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.btnCrosshairselector = New System.Windows.Forms.Button()
+        Me.lblComment = New System.Windows.Forms.Label()
         Me.tabfrm.SuspendLayout()
         Me.tabWelcome.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -222,6 +223,7 @@ Partial Class frmMain
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.lblComment)
         Me.TabPage2.Controls.Add(Me.btnrCTRL)
         Me.TabPage2.Controls.Add(Me.btnF12)
         Me.TabPage2.Controls.Add(Me.btnF11)
@@ -1055,6 +1057,15 @@ Partial Class frmMain
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'btnCrosshairselector
+        '
+        Me.btnCrosshairselector.Location = New System.Drawing.Point(8, 6)
+        Me.btnCrosshairselector.Name = "btnCrosshairselector"
+        Me.btnCrosshairselector.Size = New System.Drawing.Size(178, 45)
+        Me.btnCrosshairselector.TabIndex = 7
+        Me.btnCrosshairselector.Text = "Select crosshair"
+        Me.btnCrosshairselector.UseVisualStyleBackColor = True
+        '
         'TabPage4
         '
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
@@ -1075,14 +1086,16 @@ Partial Class frmMain
         Me.TabPage5.Text = "TabPage5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'btnCrosshairselector
+        'lblComment
         '
-        Me.btnCrosshairselector.Location = New System.Drawing.Point(8, 6)
-        Me.btnCrosshairselector.Name = "btnCrosshairselector"
-        Me.btnCrosshairselector.Size = New System.Drawing.Size(178, 45)
-        Me.btnCrosshairselector.TabIndex = 7
-        Me.btnCrosshairselector.Text = "Select crosshair"
-        Me.btnCrosshairselector.UseVisualStyleBackColor = True
+        Me.lblComment.AutoSize = True
+        Me.lblComment.Location = New System.Drawing.Point(6, 382)
+        Me.lblComment.Name = "lblComment"
+        Me.lblComment.Size = New System.Drawing.Size(842, 13)
+        Me.lblComment.TabIndex = 11
+        Me.lblComment.Text = "If for some reason you can't bind a key and still wish to bind it, you can do it " &
+    "afterwards via the file that will be generated. As of now I don't have a good me" &
+    "thod/mechanic for this."
         '
         'frmMain
         '
@@ -1097,6 +1110,7 @@ Partial Class frmMain
         Me.tabWelcome.ResumeLayout(False)
         Me.tabWelcome.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         Me.grpMovement.ResumeLayout(False)
         Me.grpMovement.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
@@ -1193,4 +1207,5 @@ Partial Class frmMain
     Friend WithEvents btnrCTRL As Button
     Friend WithEvents chckdecals As CheckBox
     Friend WithEvents btnCrosshairselector As Button
+    Friend WithEvents lblComment As Label
 End Class
