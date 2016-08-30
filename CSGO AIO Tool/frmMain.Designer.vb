@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.tabfrm = New System.Windows.Forms.TabControl()
         Me.tabWelcome = New System.Windows.Forms.TabPage()
-        Me.btnCrosshairselector = New System.Windows.Forms.Button()
         Me.btnIncorrectpath = New System.Windows.Forms.Button()
         Me.lblCSGOpath = New System.Windows.Forms.Label()
         Me.txtStatus = New System.Windows.Forms.TextBox()
@@ -34,8 +33,12 @@ Partial Class frmMain
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.lstBackups = New System.Windows.Forms.ListBox()
+        Me.btnRestoreBackup = New System.Windows.Forms.Button()
+        Me.btnCrosshairselector = New System.Windows.Forms.Button()
         Me.tabfrm.SuspendLayout()
         Me.tabWelcome.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabfrm
@@ -53,7 +56,8 @@ Partial Class frmMain
         '
         'tabWelcome
         '
-        Me.tabWelcome.Controls.Add(Me.btnCrosshairselector)
+        Me.tabWelcome.Controls.Add(Me.btnRestoreBackup)
+        Me.tabWelcome.Controls.Add(Me.lstBackups)
         Me.tabWelcome.Controls.Add(Me.btnIncorrectpath)
         Me.tabWelcome.Controls.Add(Me.lblCSGOpath)
         Me.tabWelcome.Controls.Add(Me.txtStatus)
@@ -66,15 +70,6 @@ Partial Class frmMain
         Me.tabWelcome.TabIndex = 0
         Me.tabWelcome.Text = "Welcome"
         Me.tabWelcome.UseVisualStyleBackColor = True
-        '
-        'btnCrosshairselector
-        '
-        Me.btnCrosshairselector.Location = New System.Drawing.Point(11, 236)
-        Me.btnCrosshairselector.Name = "btnCrosshairselector"
-        Me.btnCrosshairselector.Size = New System.Drawing.Size(129, 23)
-        Me.btnCrosshairselector.TabIndex = 5
-        Me.btnCrosshairselector.Text = "Select crosshair"
-        Me.btnCrosshairselector.UseVisualStyleBackColor = True
         '
         'btnIncorrectpath
         '
@@ -97,15 +92,15 @@ Partial Class frmMain
         'txtStatus
         '
         Me.txtStatus.Enabled = False
-        Me.txtStatus.Location = New System.Drawing.Point(292, 106)
+        Me.txtStatus.Location = New System.Drawing.Point(425, 106)
         Me.txtStatus.Multiline = True
         Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.Size = New System.Drawing.Size(448, 286)
+        Me.txtStatus.Size = New System.Drawing.Size(315, 286)
         Me.txtStatus.TabIndex = 2
         '
         'btnBackup
         '
-        Me.btnBackup.Location = New System.Drawing.Point(11, 365)
+        Me.btnBackup.Location = New System.Drawing.Point(14, 294)
         Me.btnBackup.Name = "btnBackup"
         Me.btnBackup.Size = New System.Drawing.Size(116, 27)
         Me.btnBackup.TabIndex = 1
@@ -123,12 +118,13 @@ Partial Class frmMain
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.btnCrosshairselector)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(746, 401)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.Text = "Dunno"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'TabPage3
@@ -161,6 +157,32 @@ Partial Class frmMain
         Me.TabPage5.Text = "TabPage5"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
+        'lstBackups
+        '
+        Me.lstBackups.FormattingEnabled = True
+        Me.lstBackups.Location = New System.Drawing.Point(136, 294)
+        Me.lstBackups.Name = "lstBackups"
+        Me.lstBackups.Size = New System.Drawing.Size(283, 95)
+        Me.lstBackups.TabIndex = 6
+        '
+        'btnRestoreBackup
+        '
+        Me.btnRestoreBackup.Location = New System.Drawing.Point(14, 362)
+        Me.btnRestoreBackup.Name = "btnRestoreBackup"
+        Me.btnRestoreBackup.Size = New System.Drawing.Size(116, 27)
+        Me.btnRestoreBackup.TabIndex = 7
+        Me.btnRestoreBackup.Text = "Restore Backup"
+        Me.btnRestoreBackup.UseVisualStyleBackColor = True
+        '
+        'btnCrosshairselector
+        '
+        Me.btnCrosshairselector.Location = New System.Drawing.Point(8, 6)
+        Me.btnCrosshairselector.Name = "btnCrosshairselector"
+        Me.btnCrosshairselector.Size = New System.Drawing.Size(129, 23)
+        Me.btnCrosshairselector.TabIndex = 6
+        Me.btnCrosshairselector.Text = "Select crosshair"
+        Me.btnCrosshairselector.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -172,6 +194,7 @@ Partial Class frmMain
         Me.tabfrm.ResumeLayout(False)
         Me.tabWelcome.ResumeLayout(False)
         Me.tabWelcome.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -187,5 +210,7 @@ Partial Class frmMain
     Friend WithEvents btnBackup As Button
     Friend WithEvents lblCSGOpath As Label
     Friend WithEvents btnIncorrectpath As Button
+    Friend WithEvents btnRestoreBackup As Button
+    Friend WithEvents lstBackups As ListBox
     Friend WithEvents btnCrosshairselector As Button
 End Class

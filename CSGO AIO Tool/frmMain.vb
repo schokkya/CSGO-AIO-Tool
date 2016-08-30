@@ -1,5 +1,5 @@
 ﻿Public Class frmMain
-    Dim globalsteampath, globalcsgopath As String
+    Dim globalsteampath, globalcsgopath, backupdate As String
     Public globalcrosshair, globalcrossname As String
     Dim textmod As Boolean
 
@@ -16,6 +16,7 @@
             End If
         End If
         GetRefreshRate()
+        CreateBackupList()
     End Sub
 
     Public Function ApplyTextMod() As Boolean
@@ -101,6 +102,7 @@
 
     Public Function CreateBackup()
         Dim DateToday As String = String.Format("{0:dd.MM.yyyy - HH.mm}", DateTime.Now)
+        backupdate = String.Format("{0:dd.MM.yyyy - HH.mm}", DateTime.Now)
         Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
         If Not IO.Directory.Exists(Application.StartupPath & "\Backups") Then
             IO.Directory.CreateDirectory(Application.StartupPath & "\Backups")
@@ -156,10 +158,16 @@
                 End If
             End If
         End If
+        CreateBackupList()
     End Function
 
     Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
-        CreateBackup()
+        Dim DateToday As String = String.Format("{0:dd.MM.yyyy - HH.mm}", DateTime.Now)
+        If Not DateToday = backupdate Then
+            CreateBackup()
+        Else
+            txtStatus.Text &= "[-] Wait a minute before creating another backup" & vbNewLine
+        End If
     End Sub
 
     Private Sub btnIncorrectpath_Click(sender As Object, e As EventArgs) Handles btnIncorrectpath.Click
@@ -181,7 +189,53 @@
         End With
     End Sub
 
-    Private Sub btnCrosshairselector_Click(sender As Object, e As EventArgs) Handles btnCrosshairselector.Click
+    Public Function CreateBackupList()
+        If IO.Directory.Exists(Application.StartupPath & "\Backups") Then
+            lstBackups.Items.Clear()
+            Dim dirs As String() = IO.Directory.GetDirectories(Application.StartupPath & "\Backups")
+            For Each dir As String In dirs
+                Dim backup As String = dir
+                If backup.Contains(Application.StartupPath & "\Backups\") Then
+                    backup = backup.Replace(Application.StartupPath & "\Backups\", "")
+                End If
+                lstBackups.Items.Add(backup)
+            Next
+        End If
+    End Function
+
+    Private Sub btnRestoreBackup_Click(sender As Object, e As EventArgs) Handles btnRestoreBackup.Click
+        If Not lstBackups.SelectedIndex = -1 Then
+            If IO.Directory.Exists(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem()) Then
+                Dim dirs As String() = IO.Directory.GetDirectories(globalsteampath + "\userdata\")
+                If IO.File.Exists(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\config.cfg") Then
+                    For Each dir As String In dirs
+                        If IO.Directory.Exists(dir & "\730\local\cfg") Then
+                            IO.File.Copy(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\config.cfg", dir & "\730\local\cfg" & "\config.cfg", True)
+                            txtStatus.Text &= "[+] config.cfg restored from backup '" & lstBackups.SelectedItem & "'" & vbNewLine
+                        End If
+                    Next
+                End If
+                If IO.File.Exists(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\video.txt") Then
+                    For Each dir As String In dirs
+                        If IO.Directory.Exists(dir & "\730\local\cfg") Then
+                            IO.File.Copy(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\video.txt", dir & "\730\local\cfg" & "\video.txt", True)
+                            txtStatus.Text &= "[+] video.txt restored from backup '" & lstBackups.SelectedItem & "'" & vbNewLine
+                        End If
+                    Next
+                End If
+                If IO.File.Exists(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\autoexec.cfg") Then
+                    If IO.Directory.Exists(globalcsgopath & "\cfg") Then
+                        IO.File.Copy(Application.StartupPath & "\Backups\" & lstBackups.SelectedItem() & "\autoexec.cfg", globalcsgopath & "\cfg" & "\video.txt", True)
+                        txtStatus.Text &= "[+] autoexec.cfg restored from backup '" & lstBackups.SelectedItem & "'" & vbNewLine
+                    End If
+                End If
+            End If
+        Else
+                txtStatus.Text &= "[-] Select a backup you wish to restore from the list"
+        End If
+    End Sub
+
+    Private Sub btnCrosshairselector_Click(sender As Object, e As EventArgs)
         Crosshair_selector.Show()
     End Sub
 
